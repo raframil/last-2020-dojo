@@ -1,0 +1,13 @@
+version: "3"
+services:
+  api:
+    container_name: api-container
+    image: node:12
+    working_dir: /usr/last-2020-dojo/src
+    restart: unless-stopped
+    command: bash -c "npm install && npm install -g nodemon && nodemon src/server.js"
+    volumes:
+      - .:/usr/last-2020-dojo/src/
+      - ./package.json:/usr/src/last-2020-dojo/package.json
+    ports:
+      - "3000:3000"
